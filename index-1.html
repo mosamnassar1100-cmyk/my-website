@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قسم المواطنين الفسدة</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="fbi-app-container">
+    <!-- رأس الصفحة الرسمي (يحتوي على خلفية أكواد الهكر تغطي المساحة بالكامل خلف العناصر) -->
+    <header class="fbi-main-header">
+        <div class="hacker-matrix-bg" id="matrix-bg"></div>
+        
+        <div class="header-content-inner">
+            <div class="fbi-badge">🛡️</div>
+            <h1>قسم معلومات الفيدرالية</h1>
+            <p>نظام قاعدة بيانات العمليات السرية لمراقبة وتوثيق ملفات العصابات الإجرامية</p>
+            
+            <!-- شريط البحث الذكي -->
+            <div class="search-box-wrapper">
+                <input type="text" id="gang-search" placeholder="ابحث عن اسم العصابة..." onkeyup="filterGangs()">
+            </div>
+        </div>
+    </header>
+
+    <!-- شبكة العصابات -->
+    <div class="gangs-grid" id="gangs-grid-container">
+        <!-- يتم توليد الكارتات تلقائياً -->
+    </div>
+
+    <!-- قسم المواطنين الفسدة - في آخر الصفحة -->
+    <section class="citizen-final-section" aria-label="قسم المواطنين الفسدة">
+        <div class="citizen-final-matrix" id="citizen-final-matrix"></div>
+        <div class="citizen-final-content">
+            <div class="citizen-final-badge">🛡️</div>
+            <h2>قسم المواطنين الفسدة</h2>
+            <p>نظام قاعدة بيانات العمليات السرية لمراقبة وتوثيق ملفات المواطنين الفسدة</p>
+            
+        </div>
+    </section>
+
+<div class="arms-dealers-card" aria-label="arms dealers">
+                <div class="arms-dealers-emoji">🔪</div>
+                <h3>arms dealers</h3>
+                <p>ملف الأمان: نشط تحت المراقبة</p>
+                <button type="button" class="arms-dealers-btn" onclick="openModal('arms dealers', '🔪')">عرض الملف</button>
+            </div>
+</div>
+
+
+<!-- عارض الصورة بالحجم الطبيعي -->
+<div id="image-lightbox" class="image-lightbox" onclick="closeImageLightbox(event)">
+    <button type="button" class="image-lightbox-close" onclick="closeImageLightbox(event)" aria-label="إغلاق">&times;</button>
+    <img id="lightbox-image" src="" alt="الصورة المكبرة" onclick="event.stopPropagation();">
+</div>
+
+<!-- نافذة الشاشة الكاملة الاستخباراتية -->
+<div id="pro-modal" class="fullscreen-modal-overlay">
+    <div class="fullscreen-modal-box">
+        <header class="fullscreen-header">
+            <div class="header-title-group">
+                <span class="live-dot-pulse"></span>
+                <h2 id="modal-gang-title">ملف العصابة الأمني</h2>
+            </div>
+            <button onclick="closeModal()" class="close-fullscreen-btn">&times; إغلاق الملف</button>
+        </header>
+
+        <div class="fullscreen-body">
+            <!-- القسم الأيمن: معرض الصور والأدلة مع العناوين -->
+            <div class="dashboard-section">
+                <div class="section-title">
+                    <span>🖼️</span>
+                    <h3>أدلة الصور الميدانية (منفصلة لكل عصابة)</h3>
+                </div>
+                <div class="upload-box-large" onclick="document.getElementById('gang-images-input').click()">
+                    <span>+ إضافة صور وأدلة جديدة</span>
+                    <p>رفع صور متعددة مع إمكانية كتابة وصف أو عنوان تحت كل صورة</p>
+                </div>
+                <input type="file" id="gang-images-input" accept="image/*" multiple style="display: none;" onchange="handleImages(event)">
+
+                <div id="images-grid-container" class="images-grid">
+                    <!-- الصور المضافة الخاصة بهذه العصابة فقط -->
+                </div>
+            </div>
+
+            <!-- القسم الأيسر: التقارير السرية -->
+            <div class="dashboard-section">
+                <div class="section-title">
+                    <span>📝</span>
+                    <h3>سجل التحقيق والتقارير الميدانية</h3>
+                </div>
+                <div class="smart-text-area-box">
+                    <label>تقرير التحقيق السري (يُحفظ تلقائياً لهذه العصابة):</label>
+                    <textarea id="gang-smart-notes" placeholder="اكتب تفاصيل التحقيق هنا..."></textarea>
+                </div>
+                <button onclick="saveCurrentGangData(this)" class="save-note-btn">حفظ التغييرات في أرشيف الفيدرالي ✓</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>
